@@ -7,9 +7,9 @@
       </v-app-bar-title>
     </v-app-bar>
     <v-main>
-      <v-table style="height: 100%" theme="dark">
+      <v-table style="height: 100%; color: #013" theme="dark">
         <tbody>
-          <tr v-for="claim in claimList" :key="claim.no">
+          <tr v-for="claim in claimList" :key="claim.no" style="color: white">
             <td>{{ claim.time }}</td>
             <td>{{ claim.number }} - {{ claim.content }}</td>
             <td>{{ claim.number }}</td>

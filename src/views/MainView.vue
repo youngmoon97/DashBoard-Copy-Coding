@@ -1,6 +1,6 @@
 <template>
   <v-layout class="justify-center">
-    <v-app-bar :elevation="5" color="#023" absolute>
+    <v-app-bar :elevation="5" color="#013" absolute>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-app-bar-title>DSME SEA TRIAL DATA CENTER</v-app-bar-title>
@@ -125,11 +125,11 @@ const menuitems = [
 ];
 const layout = reactive([
   { x: 0, y: 0, w: 5, h: 7, i: 0, static: false, mode: "chart" },
-  { x: 5, y: 0, w: 5, h: 7, i: 1, static: false, mode: "windy" },
+  { x: 5, y: 0, w: 7, h: 7, i: 1, static: false, mode: "windy" },
   { x: 0, y: 5, w: 5, h: 14, i: 2, static: false },
-  { x: 5, y: 5, w: 5, h: 7, i: 3, static: false },
+  { x: 5, y: 5, w: 7, h: 7, i: 3, static: false },
   { x: 5, y: 10, w: 2, h: 7, i: 4, static: false },
-  { x: 7, y: 10, w: 3, h: 7, i: 5, static: false },
+  { x: 7, y: 10, w: 5, h: 7, i: 5, static: false },
 ]);
 const barChartOptions1 = ref({
   legend: {
@@ -283,12 +283,18 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.justify-center {
+  background-color: #012;
+}
+h1 {
+  color: #eee;
+}
 .vgl-layout {
-  background-color: #eee;
+  background-color: #012;
 }
 
 :deep(.vgl-item:not(.vgl-item--placeholder)) {
-  background-color: #eee;
+  background-color: #023;
   border: 1px solid black;
 }
 
