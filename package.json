@@ -16,6 +16,8 @@
     "roboto-fontface": "*",
     "vue": "^3.2.0",
     "vue-echarts": "^6.6.1",
+    "vue-js-progress": "^1.0.2",
+    "vue-multiple-progress": "^1.6.0",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0",
     "webfontloader": "^1.0.0"

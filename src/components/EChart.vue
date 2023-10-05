@@ -1,23 +1,22 @@
 <template>
   <div class="bar-echart-wrap">
-    <ECharts :options="props" autoresize theme="dark-dsme-sst-01" />
+    <ECharts :options="props" autoresize />
   </div>
 </template>
 
 <script setup>
-import ECharts from "vue-echarts/components/ECharts";
+import ECharts from "vue-echarts";
 
 const props = defineProps({ prsChartOptions: Object });
 </script>
 
-<style lang="scss" scoped>
-.bar-echart-wrap >>> {
+<style scoped>
+.bar-echart-wrap {
   width: 100%;
   height: 100%;
-
-  .echarts {
-    width: 100%;
-    height: 100%;
-  }
+}
+.ECharts {
+  width: 100%;
+  height: 100%;
 }
 </style>

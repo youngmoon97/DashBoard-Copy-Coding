@@ -14,6 +14,8 @@ import { createApp } from "vue";
 import { registerPlugins } from "@/plugins";
 // GridLayout
 import { GridLayout, GridItem } from "grid-layout-plus";
+// ProgessBar
+
 const app = createApp(App);
 
 registerPlugins(app);

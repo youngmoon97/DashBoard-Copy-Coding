@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout class="justify-center">
     <v-app-bar :elevation="5" color="#023" absolute>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
@@ -35,6 +35,7 @@
       expand-on-hover
       v-model="drawer"
       class="master-main__sidebar"
+      color="#013"
       :width="60"
     >
       <v-list density="compact" nav>
@@ -48,22 +49,43 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
-      <dashboard> </dashboard>
+    <v-main class="justify-center">
+      <h1>DashBoard</h1>
       <GridLayout
         v-model:layout="layout"
-        :row-height="30"
+        :row-height="50"
         :vertical-compact="false"
       >
         <template #item="{ item }">
-          <template v-if="item.i == 0"> <!--% echart1--> </template>
-          <template v-if="item.i == 1"> <!--bar echart--></template>
-          <template v-if="item.i == 2">
-            <WindyComponent />
+          <template v-if="item.i == 0">
+            <v-container class="ma-0 pa-0" style="height: 100%">
+              <ProgessChart> </ProgessChart>
+            </v-container>
           </template>
-          <template v-if="item.i == 3"> <!--pie+boat echart--></template>
-          <template v-if="item.i == 4"> <!--pie echart--></template>
-          <template v-if="item.i == 5"> <!--table--></template>
+          <template v-if="item.i == 1">
+            <div class="echart">
+              <BarChart
+                :prschartoptions1="barChartOptions1"
+                :prschartoptions2="barChartOptions2"
+              />
+            </div>
+          </template>
+          <template v-if="item.i == 2">
+            <v-container class="ma-0 pa-0" style="height: 100%">
+              <WindyComponent />
+            </v-container>
+          </template>
+          <template v-if="item.i == 3">
+            <PieBoatChart :prschartoptions="pieBoatChartOption"></PieBoatChart>
+          </template>
+          <template v-if="item.i == 4">
+            <PieChart :prschartoptions="pieChartOption"
+          /></template>
+          <template v-if="item.i == 5">
+            <v-container class="ma-0 pa-0" style="height: 100%">
+              <ClaimTable> </ClaimTable
+            ></v-container>
+          </template>
           <!-- <span class="text">{{ item.i }}</span> -->
         </template>
       </GridLayout>
@@ -72,14 +94,17 @@
 </template>
 
 <script setup>
-import dashboard from "@/components/DashBoardComponent.vue";
 import WindyComponent from "@/components/WindyComponent.vue";
+import BarChart from "@/components/BarChart.vue";
+import PieChart from "@/components/PieChart.vue";
+import ProgessChart from "@/components/ProgessChart.vue";
+import PieBoatChart from "@/components/PieBoatChart.vue";
+import ClaimTable from "@/components/ClaimTable.vue";
 
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, ref } from "vue";
 
 let drawer = true;
 console.log(drawer);
-
 const menuitems = [
   {
     name: "mdi-monitor-dashboard",
@@ -106,7 +131,152 @@ const layout = reactive([
   { x: 5, y: 10, w: 2, h: 7, i: 4, static: false },
   { x: 7, y: 10, w: 3, h: 7, i: 5, static: false },
 ]);
+const barChartOptions1 = ref({
+  legend: {
+    bottom: "bottom",
+  },
+  tooltip: {},
+  dataset: {
+    source: [
+      ["product", "HSFO", "LSMGO", "GAS", "CO2"],
+      ["1Q", 0.01, 0.05, 0.055, null],
+      ["1Y", 0.01, 0.05, 0.055, 0.06],
+    ],
+  },
+  xAxis: { type: "category" },
+  yAxis: {},
+  // Declare several bar series, each will be mapped
+  // to a column of dataset.source by default.
+  series: [
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+  ],
+});
 
+const barChartOptions2 = ref({
+  legend: {
+    bottom: "bottom",
+  },
+  tooltip: {},
+  dataset: {
+    source: [
+      ["product", "HSFO", "LSMGO", "GAS"],
+      ["2482", 0.0, 2.7, 5.5],
+      ["5478", 1.4, 2.0, 0.0],
+    ],
+  },
+  xAxis: { type: "category" },
+  yAxis: {},
+  // Declare several bar series, each will be mapped
+  // to a column of dataset.source by default.
+  series: [
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+    {
+      type: "bar",
+      label: {
+        show: true,
+        position: "top",
+      },
+    },
+  ],
+});
+const pieChartOption = ref({
+  title: {
+    text: `1/6`,
+    left: "center",
+    top: "center",
+    textStyle: {
+      fontSize: 30,
+    },
+  },
+  legend: {
+    textStyle: {
+      fontSize: 22,
+    },
+    top: "12%",
+  },
+  series: [
+    {
+      name: "CLAIM STATUS",
+      type: "pie",
+      radius: ["35%", "50%"],
+      avoidLabelOverlap: false,
+
+      data: [
+        { value: 1, name: "In progess" },
+        { value: 5, name: "Completed" },
+      ],
+    },
+  ],
+});
+const pieBoatChartOption = ref({
+  title: {
+    text: `Overall\n\n29%\n(12/41)`,
+    left: "center",
+    top: "center",
+    textStyle: {
+      fontSize: 13,
+    },
+  },
+  legend: {
+    textStyle: {
+      fontSize: 22,
+    },
+    top: "12%",
+  },
+  series: [
+    {
+      name: "CLAIM STATUS",
+      type: "pie",
+      radius: ["35%", "50%"],
+      avoidLabelOverlap: false,
+
+      data: [
+        { value: 12, name: "Actual" },
+        { value: 29, name: "Planned" },
+      ],
+    },
+  ],
+});
 onMounted(() => {
   drawer = false;
 });
@@ -118,7 +288,7 @@ onMounted(() => {
 }
 
 :deep(.vgl-item:not(.vgl-item--placeholder)) {
-  background-color: #ccc;
+  background-color: #eee;
   border: 1px solid black;
 }
 
@@ -140,5 +310,9 @@ onMounted(() => {
 }
 .accout {
   margin-top: 14px;
+}
+.echart {
+  height: 100%;
+  width: 100%;
 }
 </style>

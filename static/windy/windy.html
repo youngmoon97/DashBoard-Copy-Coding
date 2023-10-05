@@ -14,9 +14,9 @@
   <script>
     const options = {
       key: "lKfjbLiTkkZJN8NVR9uRD7aAjrMgBgKi", // REPLACE WITH YOUR KEY !!!
-      lat: 14,
-      lon: -29,
-      zoom: 4,
+      lat: 34.6,
+      lon: 128.9,
+      zoom: 9,
     };
     let mapData = null;
     let selectedMarkers = []
@@ -39,108 +39,6 @@
         } = windyAPI;
         mapData = map;
       });
-      // console.log("init")
-      map.on('zoom', updateIconStyle);
-      map.on('zoomend', updateIconStyle);
-      map.on('viewreset', updateIconStyle);
-    }
-
-
-    const changeMap = () => {
-
-
-      const BoatIcon = L.icon({
-        iconUrl: MARKER_ICON_URL,
-        iconSize: [24, 24],
-        iconAnchor: [12, 12],
-        popupAnchor: [0, 0],
-      });
-
-      const updateIconStyle = () => {
-        for (const marker of markers) {
-          const icon = marker._icon;
-          if (!icon) {
-            continue;
-          }
-          const heading = icon.getAttribute("data-heading");
-          if (icon.style.transform.indexOf("rotateZ") === -1) {
-            icon.style.transform = `${icon.style.transform} rotateZ(${heading || 0}deg)`;
-            icon.style.transformOrigin = 'center';
-          }
-        }
-      };
-
-      fetch("boats.json")
-        .then((response) => response.json())
-        .then((result) => result.result)
-        .then((result) => {
-          try {
-            let hue = 0;
-
-            for (const boatName of Object.keys(result)) {
-
-              hue = (hue + 60) % 360;
-              const boat = result[boatName];
-
-              selectedMarkers.forEach((res, index) => {
-                if (boatName == res) {
-                  layer = L.polyline(boat.track, {
-                    color: `hsl(${hue}, 100%, 45%)`,
-                    weight: 2,
-                  }).addTo(mapData)
-                  // console.log(layer)
-                  layers.push(layer)
-
-                  layer.on("mouseover", function () {
-                    layer.setStyle({
-                      weight: 4,
-                    });
-                  });
-
-                  layer.on("mouseout", function () {
-                    layer.setStyle({
-                      weight: 2,
-                    });
-                  });
-
-                  marker = L.marker(boat.track[boat.track.length - 1], {
-                    icon: BoatIcon,
-                  }).addTo(mapData);
-                  // pastMarker[index] = marker
-
-                  marker._icon.setAttribute("data-heading", boat.heading);
-                  marker.bindPopup(boatName);
-                  markers.push(marker);
-                }
-              })
-
-              updateIconStyle();
-            }
-          } catch (error) {
-            console.error(`Error querying boats: ${error.message}`);
-          }
-        })
-        .catch((error) => {
-          console.error(`Error querying boats: ${error.message}`);
-        });
-      ''
-    }
-
-    function getSelected(data) {
-      if (data == null) return;
-      // console.log(data)
-      if (markers.length != 0) {
-        layers.forEach((layer) => {
-          mapData.removeLayer(layer)
-        })
-        markers.forEach((marker) => {
-          mapData.removeLayer(marker)
-        })
-        layers.splice(0)
-        markers.splice(0)
-      }
-      selectedMarkers = data
-      changeMap()
     }
   </script>
 </head>

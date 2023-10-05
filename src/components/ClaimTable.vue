@@ -1,0 +1,76 @@
+<template>
+  <v-layout class="full">
+    <v-app-bar :elevation="5" color="#023" absolute>
+      <v-app-bar-title
+        >CLAIM LIST
+        <v-icon>mdi-email-outline</v-icon>
+      </v-app-bar-title>
+    </v-app-bar>
+    <v-main>
+      <v-table style="height: 100%" theme="dark">
+        <tbody>
+          <tr v-for="claim in claimList" :key="claim.no">
+            <td>{{ claim.time }}</td>
+            <td>{{ claim.number }} - {{ claim.content }}</td>
+            <td>{{ claim.number }}</td>
+            <td>
+              <v-btn v-if="claim.status == 'FATAL'" color="red" width="140">{{
+                claim.status
+              }}</v-btn>
+              <v-btn v-else color="yellow" width="140">{{
+                claim.status
+              }}</v-btn>
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-main>
+  </v-layout>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const claimList = ref([
+  {
+    no: 4,
+    time: "2021-03-09 08:51:54",
+    content: "E2247[긴급] Main Trans...",
+    number: "2426",
+    status: "FATAL",
+  },
+  {
+    no: 3,
+    time: "2021-03-04 03:02:00",
+    content: "E006 PREFERENTIAL T...",
+    number: "2499",
+    status: "GENERAL ITEM",
+  },
+  {
+    no: 2,
+    time: "2021-02-15 04:13:11",
+    content: "007 NO.1 AND NO.2 V...",
+    number: "2498",
+    status: "URGENT ITEM",
+  },
+  {
+    no: 1,
+    time: "2021-02-01 06:21:07",
+    content: "018 MAIN ENGINE PAR...",
+    number: "5472",
+    status: "GENERAL ITEM",
+  },
+]);
+</script>
+
+<style scoped>
+.chart {
+  height: 100%;
+  width: 100%;
+}
+.full {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+</style>
