@@ -1,6 +1,6 @@
 <template>
   <v-layout class="justify-center">
-    <v-app-bar :elevation="5" color="#999" absolute>
+    <v-app-bar :elevation="5" color="#4D5667" scroll-threshold="1000">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-app-bar-title>DSME SEA TRIAL DATA CENTER</v-app-bar-title>
@@ -35,7 +35,7 @@
       expand-on-hover
       v-model="drawer"
       class="master-main__sidebar"
-      color="#5b5b5b"
+      color="#353C48"
       :width="60"
     >
       <v-list density="compact" nav>
@@ -49,7 +49,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main class="justify-center">
+    <v-main class="justify-center align-center">
       <h1>DashBoard</h1>
       <GridLayout
         v-model:layout="layout"
@@ -80,7 +80,7 @@
           </template>
           <template v-if="item.i == 4">
             <v-layout class="full">
-              <v-app-bar :elevation="5" color="#5b5b5b" absolute>
+              <v-app-bar :elevation="5" color="#2F3642" absolute>
                 <v-app-bar-title>CLAIM STATUS</v-app-bar-title>
               </v-app-bar>
               <v-main>
@@ -265,13 +265,13 @@ onMounted(() => {
 
 <style scoped>
 .justify-center {
-  background-color: #999;
+  background-color: #465061;
 }
 h1 {
   color: #eee;
 }
 .vgl-layout {
-  background-color: #999;
+  background-color: #465061;
 }
 
 :deep(.vgl-item:not(.vgl-item--placeholder)) {

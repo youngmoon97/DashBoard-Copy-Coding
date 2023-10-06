@@ -1,8 +1,3 @@
 <template>
-  <PieBoatChart> </PieBoatChart>
+  <v-img src="@/assets/demo.jpg"></v-img>
 </template>
-
-<script setup>
-import PieBoatChart from "@/components/PieBoatChart.vue";
-</script>
-<style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <v-layout class="full">
-    <v-app-bar :elevation="5" color="#5b5b5b" absolute>
+    <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>FUEL CONSUMPTION</v-app-bar-title>
     </v-app-bar>
     <v-main>
@@ -58,7 +58,7 @@ const props = defineProps({
 
 <style scoped>
 .chart {
-  background-color: #013;
+  color: #000;
   height: 100%;
   width: 100%;
 }

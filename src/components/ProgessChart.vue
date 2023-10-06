@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-app-bar :elevation="5" color="#5b5b5b" absolute>
+    <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>TRIAL PROGRESS(Ongoing Vessel)</v-app-bar-title>
     </v-app-bar>
     <v-main>
@@ -15,18 +15,20 @@
               ><v-progress-linear
                 v-model="percentData1"
                 height="40"
-                color="primary"
+                color="#01C0F1"
                 rounded
               >
                 <strong class="white">{{ Math.ceil(percentData1) }}%</strong>
               </v-progress-linear></v-col
             >
           </v-row>
+          <v-row class="ma-0 pa-0 text-center">
+            <v-col cols="9"><p class="white">33) Water spray test</p></v-col>
+          </v-row>
         </div>
-        <v-row>
-          <v-spacer> </v-spacer>
-          <v-col cols="9"><p class="white">33) Water spray test</p></v-col>
-        </v-row>
+
+        <v-spacer></v-spacer>
+
         <div class="flex">
           <v-row>
             <v-col cols="1"></v-col>
@@ -35,19 +37,17 @@
               ><v-progress-linear
                 v-model="percentData2"
                 height="40"
-                color="primary"
+                color="#01C0F1"
                 rounded
               >
                 <strong class="white">{{ Math.ceil(percentData2) }}%</strong>
               </v-progress-linear></v-col
             >
           </v-row>
-          <!-- <v-icon>mdi-wifi</v-icon> -->
+          <v-row class="ma-0 pa-0 text-center">
+            <v-col cols="9"><p class="white">28) Instrument meas</p></v-col>
+          </v-row>
         </div>
-        <v-row>
-          <v-spacer> </v-spacer>
-          <v-col cols="9"><p class="white">28) Instrument meas</p></v-col>
-        </v-row>
       </div>
     </v-main>
   </v-layout>
@@ -73,6 +73,7 @@ const percentData2 = 53;
   margin-top: 8%;
 }
 .flex {
-  display: flex;
+  /* display: flex; */
+  margin-bottom: 5%;
 }
 </style>

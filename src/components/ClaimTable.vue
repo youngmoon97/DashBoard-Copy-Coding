@@ -1,6 +1,6 @@
 <template>
   <v-layout class="full">
-    <v-app-bar :elevation="20" color="#5b5b5b" floating>
+    <v-app-bar :elevation="20" color="#2F3642" floating>
       <v-app-bar-title
         >CLAIM LIST
         <v-icon>mdi-email-outline</v-icon>
