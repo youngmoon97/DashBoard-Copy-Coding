@@ -1,18 +1,11 @@
 <template>
-  <v-layout class="full">
-    <v-app-bar :elevation="5" color="#023" absolute>
-      <v-app-bar-title>CLAIM STATUS</v-app-bar-title>
-    </v-app-bar>
-    <v-main>
-      <v-chart class="chart" :option="props.prschartoptions" autoresize />
-    </v-main>
-  </v-layout>
+  <v-chart class="chart" :option="props.prschartoptions" autoresize />
 </template>
 
 <script setup>
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
-import { PieChart } from "echarts/charts";
+import { PictorialBarChart } from "echarts/charts";
 import {
   TitleComponent,
   TooltipComponent,
@@ -26,7 +19,7 @@ onMounted(() => {});
 
 use([
   CanvasRenderer,
-  PieChart,
+  PictorialBarChart,
   TitleComponent,
   TooltipComponent,
   LegendComponent,

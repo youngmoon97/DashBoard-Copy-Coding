@@ -3,7 +3,7 @@ import main from "@/views/MainView.vue";
 import test from "@/views/TestView.vue";
 import bar from "@/components/BarChart";
 import progess from "@/components/ProgessChart.vue";
-import PieBoatChart from "@/components/PieBoatChart.vue";
+// import PieBoatChart from "@/components/PieBoatChart.vue";
 
 const routes = [
   {
@@ -18,7 +18,7 @@ const routes = [
   {
     path: "/test",
     name: "test",
-    component: PieBoatChart,
+    component: test,
   },
   {
     path: "/bar",

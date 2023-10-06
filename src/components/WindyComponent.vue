@@ -9,59 +9,48 @@
       @load="windyLoad"
       class="is-fullscreen"
     />
-    <!-- <div class="checkboxes">
-      <p>{{ selected }}</p>
-
-      <v-checkbox
-        hide-details
-        color="white"
-        v-for="item in boats.result"
-        :key="item.sail"
-        v-model="selected"
-        :label="item.sail"
-        :value="item.sail"
-      ></v-checkbox>
-    </div>
-    <v-btn @click="sendMessage"> Button </v-btn> -->
   </div>
 </template>
 
 <script setup>
 /* eslint-disable */
 import { onMounted, ref, defineProps } from "vue";
-import boats from "/static/windy/boats.json";
-console.log(boats.result);
-defineProps({
-  options: Object,
-});
 
-const selected = ref([]);
-const ifrmWindy = ref(null);
+// const ifrmWindy = ref(null);
+// const option = {
+//   key: "lKfjbLiTkkZJN8NVR9uRD7aAjrMgBgKi",
+//   verbose: false,
+//   lat: 34.6,
+//   lon: 128.9,
+//   zoom: 9,
+// };
 
-const windyLoad = () => {
-  if (getChild()) {
-    getChild().init();
-  }
-};
-const getChild = () => {
-  let frame = ifrmWindy.value;
-  return frame.contentWindow || frame.contentDocument;
-};
+// const mapData = {
+//   2486: {
+//     heading: 215,
+//     sail: "2486",
+//     track: [
+//       [34.6, 128.9],
+//       [34.3, 128.8],
+//       [34.2, 128.7],
+//     ],
+//   },
+// };
+// const getChild = () => {
+//   let frame = ifrmWindy.value;
+//   return frame.contentWindow || frame.contentDocument;
+// };
 
-const sendMessage = () => {
-  // console.log(selected.value);
-  getChild().getSelected(selected.value);
-};
+// const prsMapData = (val) => {
+//   if (this.isLoad)
+// };
 
-onMounted(() => {});
+// onMounted(() => {
+//   prsMapData();
+// });
 </script>
 
 <style>
-/* :root {
-  background-color: black;
-  --title-color: #fafafa;
-  --content-color: #6a6e9e;
-} */
 iframe {
   height: 100%;
   width: 100%;

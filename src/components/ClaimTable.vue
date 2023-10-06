@@ -1,13 +1,17 @@
 <template>
   <v-layout class="full">
-    <v-app-bar :elevation="5" color="#023" absolute>
+    <v-app-bar :elevation="20" color="#5b5b5b" floating>
       <v-app-bar-title
         >CLAIM LIST
         <v-icon>mdi-email-outline</v-icon>
       </v-app-bar-title>
     </v-app-bar>
     <v-main>
-      <v-table style="height: 100%; color: #013" theme="dark">
+      <v-table
+        class="text-md-left"
+        style="height: 100%; color: #013"
+        theme="dark"
+      >
         <tbody>
           <tr v-for="claim in claimList" :key="claim.no" style="color: white">
             <td>{{ claim.time }}</td>

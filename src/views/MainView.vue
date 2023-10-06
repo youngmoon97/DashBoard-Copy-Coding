@@ -1,6 +1,6 @@
 <template>
   <v-layout class="justify-center">
-    <v-app-bar :elevation="5" color="#013" absolute>
+    <v-app-bar :elevation="5" color="#999" absolute>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <v-app-bar-title>DSME SEA TRIAL DATA CENTER</v-app-bar-title>
@@ -35,7 +35,7 @@
       expand-on-hover
       v-model="drawer"
       class="master-main__sidebar"
-      color="#013"
+      color="#5b5b5b"
       :width="60"
     >
       <v-list density="compact" nav>
@@ -76,11 +76,20 @@
             </v-container>
           </template>
           <template v-if="item.i == 3">
-            <PieBoatChart :prschartoptions="pieBoatChartOption"></PieBoatChart>
+            <PieBoatChart></PieBoatChart>
           </template>
           <template v-if="item.i == 4">
-            <PieChart :prschartoptions="pieChartOption"
-          /></template>
+            <v-layout class="full">
+              <v-app-bar :elevation="5" color="#5b5b5b" absolute>
+                <v-app-bar-title>CLAIM STATUS</v-app-bar-title>
+              </v-app-bar>
+              <v-main>
+                <v-container class="ma-0 pa-0" style="height: 26vh">
+                  <PieChart :prschartoptions="pieChartOption" />
+                </v-container>
+              </v-main>
+            </v-layout>
+          </template>
           <template v-if="item.i == 5">
             <v-container class="ma-0 pa-0" style="height: 100%">
               <ClaimTable> </ClaimTable
@@ -104,7 +113,7 @@ import ClaimTable from "@/components/ClaimTable.vue";
 import { onMounted, reactive, ref } from "vue";
 
 let drawer = true;
-console.log(drawer);
+// console.log(drawer);
 const menuitems = [
   {
     name: "mdi-monitor-dashboard",
@@ -230,7 +239,7 @@ const pieChartOption = ref({
   },
   legend: {
     textStyle: {
-      fontSize: 22,
+      fontSize: 15,
     },
     top: "12%",
   },
@@ -248,35 +257,7 @@ const pieChartOption = ref({
     },
   ],
 });
-const pieBoatChartOption = ref({
-  title: {
-    text: `Overall\n\n29%\n(12/41)`,
-    left: "center",
-    top: "center",
-    textStyle: {
-      fontSize: 13,
-    },
-  },
-  legend: {
-    textStyle: {
-      fontSize: 22,
-    },
-    top: "12%",
-  },
-  series: [
-    {
-      name: "CLAIM STATUS",
-      type: "pie",
-      radius: ["35%", "50%"],
-      avoidLabelOverlap: false,
 
-      data: [
-        { value: 12, name: "Actual" },
-        { value: 29, name: "Planned" },
-      ],
-    },
-  ],
-});
 onMounted(() => {
   drawer = false;
 });
@@ -284,17 +265,17 @@ onMounted(() => {
 
 <style scoped>
 .justify-center {
-  background-color: #012;
+  background-color: #999;
 }
 h1 {
   color: #eee;
 }
 .vgl-layout {
-  background-color: #012;
+  background-color: #999;
 }
 
 :deep(.vgl-item:not(.vgl-item--placeholder)) {
-  background-color: #023;
+  background-color: #100c2a;
   border: 1px solid black;
 }
 
@@ -318,6 +299,7 @@ h1 {
   margin-top: 14px;
 }
 .echart {
+  display: block;
   height: 100%;
   width: 100%;
 }
