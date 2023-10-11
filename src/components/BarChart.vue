@@ -4,20 +4,14 @@
       <v-app-bar-title>FUEL CONSUMPTION</v-app-bar-title>
     </v-app-bar>
     <v-main style="height: 100%">
-      <v-container style="height: 100%" class="ma-0 pa-0">
-        <v-row style="height: 100%" class="ma-0 pa-0">
-          <v-col cols="6" class="ma-0 pa-0" style="height: 100%">
-            <v-chart class="chart" :option="props.prschartoptions1" autoresize
-          /></v-col>
-          <v-col cols="6" class="ma-0 pa-0" style="height: 100%">
-            <v-chart
-              class="chart"
-              :option="props.prschartoptions2"
-              autoresize
-            />
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-row style="height: 100%" class="ma-0 pa-0">
+        <v-col cols="6" class="ma-0 pa-0" style="height: 100%">
+          <v-chart class="chart" :option="props.prschartoptions1" autoresize
+        /></v-col>
+        <v-col cols="6" class="ma-0 pa-0" style="height: 100%">
+          <v-chart class="chart" :option="props.prschartoptions2" autoresize />
+        </v-col>
+      </v-row>
     </v-main>
   </v-layout>
 </template>
@@ -54,7 +48,6 @@ const props = defineProps({
   prschartoptions1: Object,
   prschartoptions2: Object,
 });
-console.log(props);
 </script>
 
 <style scoped>

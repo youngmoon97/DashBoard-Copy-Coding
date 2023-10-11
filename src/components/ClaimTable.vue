@@ -6,12 +6,8 @@
         <v-icon>mdi-email-outline</v-icon>
       </v-app-bar-title>
     </v-app-bar>
-    <v-main>
-      <v-table
-        class="text-md-left full"
-        style="height: 100%; color: #013"
-        theme="dark"
-      >
+    <v-main style="overflow: auto; background-color: #212121" scrollable="">
+      <v-table class="text-md-left full" height="auto" theme="dark">
         <tbody>
           <tr v-for="claim in claimList" :key="claim.no" style="color: white">
             <td>{{ claim.time }}</td>
@@ -36,6 +32,13 @@
 import { ref } from "vue";
 
 const claimList = ref([
+  {
+    no: 5,
+    time: "2021-10-11 13:21:07",
+    content: "E2247[긴급] SUB ENGINE PAR...",
+    number: "1234",
+    status: "FATAL",
+  },
   {
     no: 4,
     time: "2021-03-09 08:51:54",

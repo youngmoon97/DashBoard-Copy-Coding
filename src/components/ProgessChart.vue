@@ -3,7 +3,7 @@
     <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>TRIAL PROGRESS(Ongoing Vessel)</v-app-bar-title>
     </v-app-bar>
-    <v-main style="height: 100%; width: 100%" autosize>
+    <v-main style="height: 100%; width: 100%">
       <div class="progressbar">
         <div class="flex">
           <v-row>
@@ -75,7 +75,7 @@ const percentData2 = 53;
 }
 .progressbar {
   width: 80%;
-  margin: 10%;
+  margin: 5%;
 }
 .flex {
   /* display: flex; */

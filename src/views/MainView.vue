@@ -1,5 +1,5 @@
 <template>
-  <v-layout class="justify-center">
+  <v-layout class="main-layout">
     <v-app-bar
       :elevation="5"
       color="#4D5667"
@@ -55,7 +55,8 @@
 
     <v-main class="full" style="padding-left: 56px">
       <h1>DashBoard</h1>
-
+      <!-- <div class="overflow-x-auto" v-if="mobile.value">asd</div> -->
+      <!-- <v-container class="ma-0 pa-0"> -->
       <GridLayout
         v-model:layout="layout"
         :responsive-layouts="presetLayouts"
@@ -63,26 +64,14 @@
         :vertical-compact="false"
         drag-allow-from=".vue-draggable-handle"
         responsive
-        auto-size="true"
-        @breakpoint-changed="breakpointChangedEvent"
       >
         <template #item="{ item }">
           <template v-if="item.i == 0">
-            <v-container
-              class="ma-0 pa-0 full"
-              style="height: 100%; width: 100%"
-            >
-              <ProgessChart> </ProgessChart>
-            </v-container>
+            <ProgessChart> </ProgessChart>
           </template>
           <template v-if="item.i == 1">
-            <v-container
-              class="full ma-0 pa-0"
-              style="height: 100%; width: 100%"
-            >
-              <div class="vue-draggable-handle"></div>
-              <WindyComponent />
-            </v-container>
+            <div class="vue-draggable-handle"></div>
+            <WindyComponent />
           </template>
           <template v-if="item.i == 2">
             <BarChart
@@ -99,19 +88,16 @@
                 <v-app-bar-title>CLAIM STATUS</v-app-bar-title>
               </v-app-bar>
               <v-main style="height: 100%">
-                <v-container class="ma-0 pa-0" style="height: 100%">
-                  <PieChart :prschartoptions="pieChartOption" />
-                </v-container>
+                <PieChart :prschartoptions="pieChartOption" />
               </v-main>
             </v-layout>
           </template>
           <template v-if="item.i == 5">
-            <v-container class="ma-0 pa-0" style="height: 100%">
-              <ClaimTable> </ClaimTable
-            ></v-container>
+            <ClaimTable> </ClaimTable>
           </template>
         </template>
       </GridLayout>
+      <!-- </v-container> -->
     </v-main>
   </v-layout>
 </template>
@@ -126,11 +112,17 @@ import ClaimTable from "@/components/ClaimTable.vue";
 // import { Breakpoint, Layout } from "grid-layout-plus";
 
 import { onMounted, reactive, ref } from "vue";
+import { useDisplay } from "vuetify/lib/framework.mjs";
+const { mobile } = useDisplay();
 
 let drawer = true;
 function changeDrawer() {
   drawer = !drawer;
 }
+onMounted(() => {
+  drawer = false;
+  // if (mobile.value) alert(mobile.value);
+});
 // console.log(drawer);
 const menuitems = [
   {
@@ -152,20 +144,20 @@ const menuitems = [
 ];
 const presetLayouts = reactive({
   sm: [
-    { x: 0, y: 0, w: 6, h: 7, i: 0, static: false },
-    { x: 0, y: 7, w: 6, h: 9, i: 1, static: false },
+    { x: 0, y: 0, w: 6, h: 6, i: 0, static: false },
+    { x: 0, y: 6, w: 6, h: 9, i: 1, static: false },
     { x: 0, y: 14, w: 6, h: 7, i: 2, static: false },
     { x: 0, y: 21, w: 6, h: 5, i: 3, static: false },
-    { x: 0, y: 28, w: 2, h: 4, i: 4, static: false },
-    { x: 2, y: 28, w: 4, h: 4, i: 5, static: false },
+    { x: 0, y: 26, w: 2, h: 4, i: 4, static: false },
+    { x: 2, y: 26, w: 4, h: 4, i: 5, static: false },
   ],
   md: [
     { x: 0, y: 0, w: 10, h: 7, i: 0, static: false },
     { x: 0, y: 7, w: 10, h: 9, i: 1, static: false },
     { x: 0, y: 14, w: 10, h: 7, i: 2, static: false },
     { x: 0, y: 21, w: 10, h: 5, i: 3, static: false },
-    { x: 0, y: 28, w: 3, h: 4, i: 4, static: false },
-    { x: 3, y: 28, w: 7, h: 4, i: 5, static: false },
+    { x: 0, y: 26, w: 3, h: 4, i: 4, static: false },
+    { x: 3, y: 26, w: 7, h: 4, i: 5, static: false },
   ],
   lg: [
     { x: 0, y: 0, w: 5, h: 5, i: 0, static: false },
@@ -298,22 +290,15 @@ const pieChartOption = ref({
     },
   ],
 });
-
-onMounted(() => {
-  drawer = false;
-});
 </script>
 
 <style scoped>
-.justify-center {
+.main-layout {
   height: 100%;
   background-color: #465061;
 }
-h1 {
-  color: #eee;
-}
 .vgl-layout {
-  margin: 12px;
+  margin: 13px;
   background-color: #465061;
 }
 
@@ -329,14 +314,13 @@ h1 {
 :deep(.vgl-item--static) {
   background-color: #cce;
 }
+
 .text {
   margin-top: 17px;
   top: 50%;
   left: 50%;
 }
-.weather {
-  text-align: center;
-}
+
 .ms-2 {
   margin-top: 6px;
   height: 24px;
@@ -344,11 +328,6 @@ h1 {
 }
 .accout {
   margin: 4px;
-}
-.echart {
-  display: block;
-  height: 100%;
-  width: 100%;
 }
 .righttop {
   height: 50px;
@@ -358,7 +337,9 @@ h1 {
   vertical-align: auto;
 }
 h1 {
-  height: 30px;
+  color: #eee;
+  width: 100%;
+  height: 100%;
   margin-top: 8px;
   margin-left: 22px;
 }
@@ -375,15 +356,21 @@ h1 {
   background-origin: content-box;
   border-radius: 10px;
 }
-.full {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
 .v-navigation-drawer__scrim {
   top: 0;
   left: 0;
   width: 0;
   height: 0;
+}
+@media (max-width: 1280px) {
+  .main {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    width: 1280px;
+    white-space: nowrap;
+    /* 넘쳐나는 내용 무조건 숨김 */
+    overflow-x: hidden;
+  }
 }
 </style>
