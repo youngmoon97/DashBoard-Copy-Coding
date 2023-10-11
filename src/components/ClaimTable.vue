@@ -8,7 +8,7 @@
     </v-app-bar>
     <v-main>
       <v-table
-        class="text-md-left"
+        class="text-md-left full"
         style="height: 100%; color: #013"
         theme="dark"
       >
@@ -73,7 +73,6 @@ const claimList = ref([
   width: 100%;
 }
 .full {
-  display: flex;
   height: 100%;
   width: 100%;
 }

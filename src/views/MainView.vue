@@ -1,42 +1,46 @@
 <template>
   <v-layout class="justify-center">
-    <v-app-bar :elevation="5" color="#4D5667" scroll-threshold="1000">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+    <v-app-bar
+      :elevation="5"
+      color="#4D5667"
+      scroll-threshold="1000"
+      :height="50"
+    >
+      <v-app-bar-nav-icon @click.stop="changeDrawer" />
 
       <v-app-bar-title>DSME SEA TRIAL DATA CENTER</v-app-bar-title>
 
       <div class="righttop" style="display: flex; text-align: center">
-        <span class="text" style="vertical-align: middle">목</span>
-        <div>
+        <span class="text">목</span>
+        <div style="margin: 0px">
           <v-btn icon="mdi-weather-sunny" class="ms-2"></v-btn>
           <p>9/14</p>
         </div>
-        <span class="text" style="vertical-align: middle">금</span>
+        <span class="text">금</span>
         <div>
           <v-btn icon="mdi-weather-partly-cloudy" class="ms-2"></v-btn>
           <p>9/15</p>
         </div>
-        <span class="text" style="vertical-align: middle">토</span>
+        <span class="text">토</span>
         <div>
           <v-btn icon="mdi-weather-pouring" class="ms-2"></v-btn>
           <p>9/16</p>
         </div>
         <v-spacer></v-spacer>
-        <div class="accout">
-          <span style="vertical-align: middle">조영문</span>
-          <v-btn icon="mdi-account" class="ms-2"></v-btn>
-        </div>
+        <!-- <div class="accout"> -->
+        <span class="text">조영문</span>
+        <v-btn icon="mdi-account" class="accout"></v-btn>
+        <!-- </div> -->
       </div>
     </v-app-bar>
 
     <v-navigation-drawer
       app
-      clipped
-      expand-on-hover
+      :scrim="false"
       v-model="drawer"
       class="master-main__sidebar"
       color="#353C48"
-      :width="60"
+      :width="56"
     >
       <v-list density="compact" nav>
         <v-list-item link v-for="menu in menuitems" :key="menu.name">
@@ -49,31 +53,42 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main class="justify-center align-center">
+    <v-main class="full" style="padding-left: 56px">
       <h1>DashBoard</h1>
+
       <GridLayout
         v-model:layout="layout"
-        :row-height="50"
+        :responsive-layouts="presetLayouts"
+        :row-height="58.4"
         :vertical-compact="false"
+        drag-allow-from=".vue-draggable-handle"
+        responsive
+        auto-size="true"
+        @breakpoint-changed="breakpointChangedEvent"
       >
         <template #item="{ item }">
           <template v-if="item.i == 0">
-            <v-container class="ma-0 pa-0" style="height: 100%">
+            <v-container
+              class="ma-0 pa-0 full"
+              style="height: 100%; width: 100%"
+            >
               <ProgessChart> </ProgessChart>
             </v-container>
           </template>
           <template v-if="item.i == 1">
-            <div class="echart">
-              <BarChart
-                :prschartoptions1="barChartOptions1"
-                :prschartoptions2="barChartOptions2"
-              />
-            </div>
-          </template>
-          <template v-if="item.i == 2">
-            <v-container class="ma-0 pa-0" style="height: 100%">
+            <v-container
+              class="full ma-0 pa-0"
+              style="height: 100%; width: 100%"
+            >
+              <div class="vue-draggable-handle"></div>
               <WindyComponent />
             </v-container>
+          </template>
+          <template v-if="item.i == 2">
+            <BarChart
+              :prschartoptions1="barChartOptions1"
+              :prschartoptions2="barChartOptions2"
+            />
           </template>
           <template v-if="item.i == 3">
             <PieBoatChart></PieBoatChart>
@@ -83,8 +98,8 @@
               <v-app-bar :elevation="5" color="#2F3642" absolute>
                 <v-app-bar-title>CLAIM STATUS</v-app-bar-title>
               </v-app-bar>
-              <v-main>
-                <v-container class="ma-0 pa-0" style="height: 26vh">
+              <v-main style="height: 100%">
+                <v-container class="ma-0 pa-0" style="height: 100%">
                   <PieChart :prschartoptions="pieChartOption" />
                 </v-container>
               </v-main>
@@ -95,7 +110,6 @@
               <ClaimTable> </ClaimTable
             ></v-container>
           </template>
-          <!-- <span class="text">{{ item.i }}</span> -->
         </template>
       </GridLayout>
     </v-main>
@@ -109,10 +123,14 @@ import PieChart from "@/components/PieChart.vue";
 import ProgessChart from "@/components/ProgessChart.vue";
 import PieBoatChart from "@/components/PieBoatChart.vue";
 import ClaimTable from "@/components/ClaimTable.vue";
+// import { Breakpoint, Layout } from "grid-layout-plus";
 
 import { onMounted, reactive, ref } from "vue";
 
 let drawer = true;
+function changeDrawer() {
+  drawer = !drawer;
+}
 // console.log(drawer);
 const menuitems = [
   {
@@ -132,14 +150,34 @@ const menuitems = [
     path: "/forth",
   },
 ];
-const layout = reactive([
-  { x: 0, y: 0, w: 5, h: 7, i: 0, static: false, mode: "chart" },
-  { x: 5, y: 0, w: 7, h: 7, i: 1, static: false, mode: "windy" },
-  { x: 0, y: 5, w: 5, h: 14, i: 2, static: false },
-  { x: 5, y: 5, w: 7, h: 7, i: 3, static: false },
-  { x: 5, y: 10, w: 2, h: 7, i: 4, static: false },
-  { x: 7, y: 10, w: 5, h: 7, i: 5, static: false },
-]);
+const presetLayouts = reactive({
+  sm: [
+    { x: 0, y: 0, w: 6, h: 7, i: 0, static: false },
+    { x: 0, y: 7, w: 6, h: 9, i: 1, static: false },
+    { x: 0, y: 14, w: 6, h: 7, i: 2, static: false },
+    { x: 0, y: 21, w: 6, h: 5, i: 3, static: false },
+    { x: 0, y: 28, w: 2, h: 4, i: 4, static: false },
+    { x: 2, y: 28, w: 4, h: 4, i: 5, static: false },
+  ],
+  md: [
+    { x: 0, y: 0, w: 10, h: 7, i: 0, static: false },
+    { x: 0, y: 7, w: 10, h: 9, i: 1, static: false },
+    { x: 0, y: 14, w: 10, h: 7, i: 2, static: false },
+    { x: 0, y: 21, w: 10, h: 5, i: 3, static: false },
+    { x: 0, y: 28, w: 3, h: 4, i: 4, static: false },
+    { x: 3, y: 28, w: 7, h: 4, i: 5, static: false },
+  ],
+  lg: [
+    { x: 0, y: 0, w: 5, h: 5, i: 0, static: false },
+    { x: 0, y: 5, w: 5, h: 9, i: 1, static: false },
+    { x: 5, y: 0, w: 7, h: 5, i: 2, static: false },
+    { x: 5, y: 5, w: 7, h: 5, i: 3, static: false },
+    { x: 5, y: 10, w: 2, h: 4, i: 4, static: false },
+    { x: 7, y: 10, w: 5, h: 4, i: 5, static: false },
+  ],
+});
+const layout = ref(presetLayouts.lg);
+
 const barChartOptions1 = ref({
   legend: {
     bottom: "bottom",
@@ -232,28 +270,31 @@ const pieChartOption = ref({
   title: {
     text: `1/6`,
     left: "center",
-    top: "center",
+    top: "50%",
     textStyle: {
-      fontSize: 30,
+      fontSize: 20,
     },
   },
   legend: {
     textStyle: {
-      fontSize: 15,
+      fontSize: 14,
     },
-    top: "12%",
+    top: "10%",
   },
   series: [
     {
+      center: ["50%", "60%"],
       name: "CLAIM STATUS",
       type: "pie",
-      radius: ["35%", "50%"],
+      radius: ["35%", "60%"],
       avoidLabelOverlap: false,
-
       data: [
         { value: 1, name: "In progess" },
         { value: 5, name: "Completed" },
       ],
+      label: {
+        show: false,
+      },
     },
   ],
 });
@@ -265,12 +306,14 @@ onMounted(() => {
 
 <style scoped>
 .justify-center {
+  height: 100%;
   background-color: #465061;
 }
 h1 {
   color: #eee;
 }
 .vgl-layout {
+  margin: 12px;
   background-color: #465061;
 }
 
@@ -287,20 +330,60 @@ h1 {
   background-color: #cce;
 }
 .text {
-  margin-top: 25px;
+  margin-top: 17px;
+  top: 50%;
+  left: 50%;
 }
 .weather {
   text-align: center;
 }
 .ms-2 {
-  margin-right: 6px;
+  margin-top: 6px;
+  height: 24px;
+  /* margin: 6px; */
 }
 .accout {
-  margin-top: 14px;
+  margin: 4px;
 }
 .echart {
   display: block;
   height: 100%;
   width: 100%;
+}
+.righttop {
+  height: 50px;
+  padding: auto;
+  text-align: center;
+  align-content: center;
+  vertical-align: auto;
+}
+h1 {
+  height: 30px;
+  margin-top: 8px;
+  margin-left: 22px;
+}
+.vue-draggable-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  padding: 0 8px 8px 0;
+  cursor: pointer;
+  background-color: black;
+  background-origin: content-box;
+  border-radius: 10px;
+}
+.full {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.v-navigation-drawer__scrim {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
 }
 </style>

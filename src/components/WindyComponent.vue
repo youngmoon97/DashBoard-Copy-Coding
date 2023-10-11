@@ -61,10 +61,6 @@ iframe {
   width: 100%;
   display: flex;
 }
-.checkboxes {
-  width: 20%;
-  height: 80vh;
-}
 .v-input__control .v-label {
   color: white;
 }

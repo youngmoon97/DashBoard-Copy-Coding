@@ -15,6 +15,7 @@ import { registerPlugins } from "@/plugins";
 // GridLayout
 import { GridLayout, GridItem } from "grid-layout-plus";
 // ProgessBar
+import "@/assets/css/main.css";
 
 const app = createApp(App);
 

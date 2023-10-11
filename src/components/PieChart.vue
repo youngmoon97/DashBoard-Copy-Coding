@@ -1,5 +1,5 @@
 <template>
-  <v-chart class="chart" :option="props.prschartoptions" autoresize />
+  <v-chart class="chart ms-0 pa-0" :option="props.prschartoptions" autoresize />
 </template>
 
 <script setup>

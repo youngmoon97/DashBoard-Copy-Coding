@@ -3,34 +3,34 @@
     <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>ANNUAL TRIAL STATUS(Actual / Planned)</v-app-bar-title>
     </v-app-bar>
-    <v-main>
-      <v-container style="height: 26vh" class="ma-0 pa-0 align-center">
-        <v-row style="height: 100%" class="ma-0 pa-0">
-          <v-col cols="4" class="ma-0 pa-0">
+    <v-main class="full">
+      <v-container class="full ma-0 pa-0 align-center">
+        <v-row style="height: 100%; width: 100%" class="ma-0 pa-0">
+          <v-col cols="4" class="ma-0 pa-0" style="height: 100%; width: 100%">
             <PieChart :prschartoptions="pieBoatChartOption" />
           </v-col>
-          <v-col cols="4" class="ma-0 pa-0">
-            <v-row style="height: 50%" class="ma-0 pa-0">
-              <v-col cos="12" class="ma-0 pa-0"
-                ><BoatChart :prschartoptions="option1"></BoatChart
-              ></v-col>
+          <v-col cols="4" class="ma-0 pa-0" style="height: 100%; width: 100%">
+            <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
+              <v-col class="ma-0 pa-0">
+                <BoatChart :prschartoptions="option1"></BoatChart>
+              </v-col>
             </v-row>
-            <v-row style="height: 50%" class="ma-0 pa-0">
-              <v-col cos="6" class="ma-0 pa-0">
-                <BoatChart :prschartoptions="option3"></BoatChart
-              ></v-col>
+            <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
+              <v-col class="ma-0 pa-0" style="height: 100%; width: 100%">
+                <BoatChart :prschartoptions="option3"></BoatChart>
+              </v-col>
             </v-row>
           </v-col>
           <v-col cols="4" class="ma-0 pa-0">
-            <v-row style="height: 50%" class="ma-0 pa-0">
-              <v-col cos="6" class="ma-0 pa-0">
-                <BoatChart :prschartoptions="option2"></BoatChart
-              ></v-col>
+            <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
+              <v-col class="ma-0 pa-0" style="height: 100%; width: 100%">
+                <BoatChart :prschartoptions="option2"></BoatChart>
+              </v-col>
             </v-row>
-            <v-row style="height: 50%" class="ma-0 pa-0">
-              <v-col cos="6" class="ma-0 pa-0">
-                <BoatChart :prschartoptions="option4"></BoatChart
-              ></v-col>
+            <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
+              <v-col class="ma-0 pa-0" style="height: 100%; width: 100%">
+                <BoatChart :prschartoptions="option4"></BoatChart>
+              </v-col>
             </v-row>
           </v-col>
         </v-row>
@@ -47,7 +47,7 @@ import { ref } from "vue";
 
 const pieBoatChartOption = ref({
   title: {
-    text: `Overall\n\n29%\n(12/41)$`,
+    text: `Overall\n\n29%\n(12/41)`,
     left: "center",
     top: "center",
     textStyle: {
@@ -62,7 +62,7 @@ const pieBoatChartOption = ref({
   },
   series: [
     {
-      name: "CLAIM STATUS",
+      name: "ANNUAL TRIAL STATUS",
       type: "pie",
       radius: ["35%", "50%"],
       avoidLabelOverlap: false,
@@ -71,6 +71,9 @@ const pieBoatChartOption = ref({
         { value: 12, name: "Actual" },
         { value: 29, name: "Planned" },
       ],
+      label: {
+        show: false,
+      },
     },
   ],
 });
@@ -82,7 +85,8 @@ const gt = 15;
 
 const labelSetting = {
   show: true,
-  position: "top",
+  top: "70%",
+  // position: "top",
   offset: [0, -20],
   formatter: function (param) {
     return (
@@ -92,7 +96,7 @@ const labelSetting = {
       "%)"
     );
   },
-  fontSize: 18,
+  fontSize: 20,
   fontFamily: "Arial",
 };
 
@@ -100,9 +104,9 @@ const option1 = ref({
   tooltip: {},
   title: {
     text: `ST(4/${st})\nGT(4/${gt})`,
-    top: "top",
+    right: "top",
     textStyle: {
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   xAxis: {
@@ -112,7 +116,7 @@ const option1 = ref({
     splitLine: { show: false },
   },
   yAxis: {
-    data: ["LNG"],
+    data: ["full"],
     axisTick: { show: false },
     axisLine: { show: false },
     axisLabel: { show: false },
@@ -128,6 +132,8 @@ const option1 = ref({
         {
           value: 8,
           symbol: symbols,
+          symbolSize: [250, 60],
+          symbolColor: "black",
         },
       ],
       z: 10,
@@ -142,8 +148,10 @@ const option1 = ref({
       },
       data: [
         {
-          value: 1,
+          value: 29,
           symbol: symbols,
+          symbolSize: [250, 60],
+          symbolColor: "black",
         },
       ],
     },
@@ -153,9 +161,9 @@ const option2 = ref({
   tooltip: {},
   title: {
     text: `ST(0/1)`,
-    top: "top",
+    right: "top",
     textStyle: {
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   xAxis: {
@@ -181,6 +189,7 @@ const option2 = ref({
         {
           value: 0,
           symbol: symbols,
+          symbolSize: [250, 60],
         },
       ],
       z: 10,
@@ -197,6 +206,7 @@ const option2 = ref({
         {
           value: 1,
           symbol: symbols,
+          symbolSize: [250, 60],
         },
       ],
     },
@@ -206,9 +216,9 @@ const option3 = ref({
   tooltip: {},
   title: {
     text: `ST(3/6)`,
-    top: "top",
+    right: "top",
     textStyle: {
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   xAxis: {
@@ -232,8 +242,9 @@ const option3 = ref({
       label: labelSetting,
       data: [
         {
-          value: 3,
+          value: 14.6,
           symbol: symbols,
+          symbolSize: [250, 60],
         },
       ],
       z: 10,
@@ -250,6 +261,7 @@ const option3 = ref({
         {
           value: st + gt,
           symbol: symbols,
+          symbolSize: [250, 60],
         },
       ],
     },
@@ -259,9 +271,9 @@ const option4 = ref({
   tooltip: {},
   title: {
     text: `ST(1/5)`,
-    top: "top",
+    right: "top",
     textStyle: {
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   xAxis: {
@@ -285,8 +297,9 @@ const option4 = ref({
       label: labelSetting,
       data: [
         {
-          value: 6,
+          value: 5.9,
           symbol: symbols,
+          symbolSize: [250, 60],
         },
       ],
       z: 10,
@@ -303,6 +316,7 @@ const option4 = ref({
         {
           value: st + gt,
           symbol: symbols,
+          symbolSize: [250, 60],
         },
       ],
     },
@@ -311,10 +325,6 @@ const option4 = ref({
 </script>
 
 <style scoped>
-.chart {
-  height: 100%;
-  width: 100%;
-}
 .full {
   display: block;
   height: 100%;

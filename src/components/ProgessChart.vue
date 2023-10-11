@@ -1,17 +1,21 @@
 <template>
-  <v-layout>
+  <v-layout class="full">
     <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>TRIAL PROGRESS(Ongoing Vessel)</v-app-bar-title>
     </v-app-bar>
-    <v-main>
+    <v-main style="height: 100%; width: 100%" autosize>
       <div class="progressbar">
         <div class="flex">
           <v-row>
             <v-col cols="1">
-              <v-icon style="color: deepskyblue">mdi-wifi</v-icon></v-col
+              <v-icon
+                style="color: deepskyblue; margin-top: 4px; margin-right: 2px"
+                >mdi-wifi</v-icon
+              ></v-col
             >
             <v-col cols="2"><h1 class="white">H.2497</h1></v-col>
-            <v-col cols="9"
+            <v-col cols="1"></v-col>
+            <v-col cols="8"
               ><v-progress-linear
                 v-model="percentData1"
                 height="40"
@@ -23,7 +27,7 @@
             >
           </v-row>
           <v-row class="ma-0 pa-0 text-center">
-            <v-col cols="9"><p class="white">33) Water spray test</p></v-col>
+            <v-col cols="11"><p class="white">33) Water spray test</p></v-col>
           </v-row>
         </div>
 
@@ -33,7 +37,9 @@
           <v-row>
             <v-col cols="1"></v-col>
             <v-col cols="2"><h1 class="white">H.4325</h1></v-col>
-            <v-col cols="9"
+            <v-col cols="1"></v-col>
+
+            <v-col cols="8"
               ><v-progress-linear
                 v-model="percentData2"
                 height="40"
@@ -45,7 +51,7 @@
             >
           </v-row>
           <v-row class="ma-0 pa-0 text-center">
-            <v-col cols="9"><p class="white">28) Instrument meas</p></v-col>
+            <v-col cols="11"><p class="white">28) Instrument meas</p></v-col>
           </v-row>
         </div>
       </div>
@@ -69,11 +75,15 @@ const percentData2 = 53;
 }
 .progressbar {
   width: 80%;
-  margin-left: 10%;
-  margin-top: 8%;
+  margin: 10%;
 }
 .flex {
   /* display: flex; */
   margin-bottom: 5%;
+}
+.full {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 </style>
