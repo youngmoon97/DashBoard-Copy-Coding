@@ -53,7 +53,8 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main class="full" style="padding-left: 56px">
+    <v-main class="full main" style="padding-left: 56px">
+      <!-- <v-container class="main-container ma-0 pa-0 full"> -->
       <h1>DashBoard</h1>
       <!-- <div class="overflow-x-auto" v-if="mobile.value">asd</div> -->
       <!-- <v-container class="ma-0 pa-0"> -->
@@ -97,6 +98,7 @@
           </template>
         </template>
       </GridLayout>
+      <!-- </v-container> -->
       <!-- </v-container> -->
     </v-main>
   </v-layout>
@@ -294,11 +296,17 @@ const pieChartOption = ref({
 
 <style scoped>
 .main-layout {
-  height: 100%;
+  background-color: #465061;
+}
+.main {
+  display: block;
   background-color: #465061;
 }
 .vgl-layout {
-  margin: 13px;
+  padding-top: 0px;
+  padding-left: 13px;
+  padding-bottom: 13px;
+  padding-right: 13px;
   background-color: #465061;
 }
 
@@ -337,11 +345,11 @@ const pieChartOption = ref({
   vertical-align: auto;
 }
 h1 {
+  background-color: #465061;
   color: #eee;
-  width: 100%;
   height: 100%;
   margin-top: 8px;
-  margin-left: 22px;
+  margin-left: 13px;
 }
 .vue-draggable-handle {
   position: absolute;
@@ -356,12 +364,7 @@ h1 {
   background-origin: content-box;
   border-radius: 10px;
 }
-.v-navigation-drawer__scrim {
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-}
+
 @media (max-width: 1280px) {
   .main {
     padding: 0;
