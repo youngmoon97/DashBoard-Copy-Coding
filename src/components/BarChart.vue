@@ -4,11 +4,11 @@
       <v-app-bar-title>FUEL CONSUMPTION</v-app-bar-title>
     </v-app-bar>
     <v-main style="height: 100%">
-      <v-row style="height: 100%" class="ma-0 pa-0">
-        <v-col cols="6" class="ma-0 pa-0" style="height: 100%">
+      <v-row style="height: 100%" class="ma-0 pa-0" no-gutters>
+        <v-col sm="12" md="6" lg="6" class="ma-0 pa-0 half">
           <v-chart class="chart" :option="props.prschartoptions1" autoresize
         /></v-col>
-        <v-col cols="6" class="ma-0 pa-0" style="height: 100%">
+        <v-col sm="12" md="6" lg="6" class="ma-0 pa-0 half">
           <v-chart class="chart" :option="props.prschartoptions2" autoresize />
         </v-col>
       </v-row>

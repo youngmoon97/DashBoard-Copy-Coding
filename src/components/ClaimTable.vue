@@ -1,13 +1,13 @@
 <template>
-  <v-layout class="full">
+  <v-layout class="full table">
     <v-app-bar :elevation="20" color="#2F3642" floating>
       <v-app-bar-title
         >CLAIM LIST
         <v-icon>mdi-email-outline</v-icon>
       </v-app-bar-title>
     </v-app-bar>
-    <v-main style="overflow: auto; background-color: #212121" scrollable="">
-      <v-table class="text-md-left full" height="auto" theme="dark">
+    <v-main class="full table" style="overflow: auto" scrollable="true">
+      <v-table class="text-left table" theme="dark">
         <tbody>
           <tr v-for="claim in claimList" :key="claim.no" style="color: white">
             <td>{{ claim.time }}</td>

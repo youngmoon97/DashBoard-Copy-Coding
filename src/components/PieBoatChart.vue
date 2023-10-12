@@ -4,34 +4,36 @@
       <v-app-bar-title>ANNUAL TRIAL STATUS(Actual / Planned)</v-app-bar-title>
     </v-app-bar>
     <v-main class="full">
-      <v-row style="height: 100%; width: 100%" class="ma-0 pa-0">
+      <v-row class="ma-0 pa-0" style="height: 100%">
         <v-col
-          cols="4"
-          class="ma-0 pa-0"
-          style="height: 100%; width: 100% margin-left:12px"
+          sm="12"
+          md="4"
+          lg="4"
+          class="ma-0 pa-0 division3"
+          style="margin-left: 12px"
         >
           <PieChart :prschartoptions="pieBoatChartOption" />
         </v-col>
-        <v-col cols="4" class="ma-0 pa-0" style="height: 100%; width: 100%">
-          <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
+        <v-col sm="6" md="4" lg="4" class="ma-0 pa-0 division3">
+          <v-row class="ma-0 pa-0" style="height: 50%">
             <v-col class="ma-0 pa-0">
               <BoatChart :prschartoptions="option1"></BoatChart>
             </v-col>
           </v-row>
-          <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
-            <v-col class="ma-0 pa-0" style="height: 100%; width: 100%">
+          <v-row class="ma-0 pa-0" style="height: 50%">
+            <v-col class="ma-0 pa-0">
               <BoatChart :prschartoptions="option3"></BoatChart>
             </v-col>
           </v-row>
         </v-col>
-        <v-col cols="4" class="ma-0 pa-0">
-          <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
-            <v-col class="ma-0 pa-0" style="height: 100%; width: 100%">
+        <v-col sm="6" md="4" lg="4" class="ma-0 pa-0 division3">
+          <v-row class="ma-0 pa-0" style="height: 50%">
+            <v-col class="ma-0 pa-0">
               <BoatChart :prschartoptions="option2"></BoatChart>
             </v-col>
           </v-row>
-          <v-row style="height: 50%; width: 100%" class="ma-0 pa-0">
-            <v-col class="ma-0 pa-0" style="height: 100%; width: 100%">
+          <v-row class="ma-0 pa-0" style="height: 50%">
+            <v-col class="ma-0 pa-0">
               <BoatChart :prschartoptions="option4"></BoatChart>
             </v-col>
           </v-row>

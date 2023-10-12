@@ -61,7 +61,7 @@
       <GridLayout
         v-model:layout="layout"
         :responsive-layouts="presetLayouts"
-        :row-height="58.4"
+        :row-height="59"
         :vertical-compact="false"
         drag-allow-from=".vue-draggable-handle"
         responsive
@@ -114,8 +114,6 @@ import ClaimTable from "@/components/ClaimTable.vue";
 // import { Breakpoint, Layout } from "grid-layout-plus";
 
 import { onMounted, reactive, ref } from "vue";
-import { useDisplay } from "vuetify/lib/framework.mjs";
-const { mobile } = useDisplay();
 
 let drawer = true;
 function changeDrawer() {
@@ -145,11 +143,19 @@ const menuitems = [
   },
 ];
 const presetLayouts = reactive({
+  xs: [
+    { x: 0, y: 0, w: 4, h: 5, i: 0, static: false },
+    { x: 0, y: 5, w: 4, h: 6, i: 1, static: false },
+    { x: 0, y: 11, w: 6, h: 6, i: 2, static: false },
+    { x: 0, y: 17, w: 6, h: 6, i: 3, static: false },
+    { x: 0, y: 23, w: 6, h: 4, i: 4, static: false },
+    { x: 2, y: 27, w: 6, h: 4, i: 5, static: false },
+  ],
   sm: [
     { x: 0, y: 0, w: 6, h: 6, i: 0, static: false },
     { x: 0, y: 6, w: 6, h: 9, i: 1, static: false },
-    { x: 0, y: 14, w: 6, h: 7, i: 2, static: false },
-    { x: 0, y: 21, w: 6, h: 5, i: 3, static: false },
+    { x: 0, y: 14, w: 6, h: 14, i: 2, static: false },
+    { x: 0, y: 21, w: 6, h: 10, i: 3, static: false },
     { x: 0, y: 26, w: 2, h: 4, i: 4, static: false },
     { x: 2, y: 26, w: 4, h: 4, i: 5, static: false },
   ],
@@ -309,13 +315,14 @@ const pieChartOption = ref({
   padding-right: 13px;
   background-color: #465061;
 }
-
 :deep(.vgl-item:not(.vgl-item--placeholder)) {
   background-color: #100c2a;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  /* min-width: 923px; */
 }
 
 :deep(.vgl-item--resizing) {
+  z-index: 1;
   opacity: 90%;
 }
 
@@ -363,17 +370,5 @@ h1 {
   background-color: black;
   background-origin: content-box;
   border-radius: 10px;
-}
-
-@media (max-width: 1280px) {
-  .main {
-    padding: 0;
-    margin: 0;
-    font-size: 1rem;
-    width: 1280px;
-    white-space: nowrap;
-    /* 넘쳐나는 내용 무조건 숨김 */
-    overflow-x: hidden;
-  }
 }
 </style>
