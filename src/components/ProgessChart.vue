@@ -3,8 +3,11 @@
     <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>TRIAL PROGRESS(Ongoing Vessel)</v-app-bar-title>
     </v-app-bar>
-    <v-main style="height: 100%; width: 100%">
-      <div class="progressbar">
+    <v-main style="height: 100%; width: 100%" class="justify-center">
+      <v-container
+        class="progressbar justify-center align-center"
+        style="margin-top: 45px"
+      >
         <div class="flex">
           <v-row>
             <v-col cols="1">
@@ -33,7 +36,7 @@
 
         <v-spacer></v-spacer>
 
-        <div class="flex">
+        <div class="flex justify-center align-center">
           <v-row>
             <v-col cols="1"></v-col>
             <v-col cols="2"><h1 class="white">H.4325</h1></v-col>
@@ -54,7 +57,7 @@
             <v-col cols="11"><p class="white">28) Instrument meas</p></v-col>
           </v-row>
         </div>
-      </div>
+      </v-container>
     </v-main>
   </v-layout>
 </template>
@@ -74,12 +77,11 @@ const percentData2 = 53;
   color: white;
 }
 .progressbar {
+  height: 100%;
   width: 80%;
-  margin: 5%;
 }
 .flex {
   /* display: flex; */
-  margin-bottom: 5%;
 }
 .full {
   display: block;

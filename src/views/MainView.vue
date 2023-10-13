@@ -53,7 +53,10 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main class="full main" style="padding-left: 56px">
+    <v-main
+      class="full main justify-center align-center"
+      style="padding-left: 56px"
+    >
       <!-- <v-container class="main-container ma-0 pa-0 full"> -->
       <h1>DashBoard</h1>
       <!-- <div class="overflow-x-auto" v-if="mobile.value">asd</div> -->
@@ -146,22 +149,22 @@ const presetLayouts = reactive({
   xs: [
     { x: 0, y: 0, w: 4, h: 5, i: 0, static: false },
     { x: 0, y: 5, w: 4, h: 6, i: 1, static: false },
-    { x: 0, y: 11, w: 6, h: 6, i: 2, static: false },
+    { x: 0, y: 11, w: 6, h: 8, i: 2, static: false },
     { x: 0, y: 17, w: 6, h: 6, i: 3, static: false },
     { x: 0, y: 23, w: 6, h: 4, i: 4, static: false },
     { x: 2, y: 27, w: 6, h: 4, i: 5, static: false },
   ],
   sm: [
-    { x: 0, y: 0, w: 6, h: 6, i: 0, static: false },
-    { x: 0, y: 6, w: 6, h: 9, i: 1, static: false },
-    { x: 0, y: 14, w: 6, h: 14, i: 2, static: false },
-    { x: 0, y: 21, w: 6, h: 10, i: 3, static: false },
+    { x: 0, y: 0, w: 6, h: 5, i: 0, static: false },
+    { x: 0, y: 5, w: 6, h: 9, i: 1, static: false },
+    { x: 0, y: 14, w: 6, h: 10, i: 2, static: false },
+    { x: 0, y: 21, w: 6, h: 6, i: 3, static: false },
     { x: 0, y: 26, w: 2, h: 4, i: 4, static: false },
     { x: 2, y: 26, w: 4, h: 4, i: 5, static: false },
   ],
   md: [
-    { x: 0, y: 0, w: 10, h: 7, i: 0, static: false },
-    { x: 0, y: 7, w: 10, h: 9, i: 1, static: false },
+    { x: 0, y: 0, w: 10, h: 5, i: 0, static: false },
+    { x: 0, y: 5, w: 10, h: 9, i: 1, static: false },
     { x: 0, y: 14, w: 10, h: 7, i: 2, static: false },
     { x: 0, y: 21, w: 10, h: 5, i: 3, static: false },
     { x: 0, y: 26, w: 3, h: 4, i: 4, static: false },
@@ -270,14 +273,14 @@ const pieChartOption = ref({
   title: {
     text: `1/6`,
     left: "center",
-    top: "50%",
+    top: "60%",
     textStyle: {
-      fontSize: 20,
+      fontSize: "1.2rem",
     },
   },
   legend: {
     textStyle: {
-      fontSize: 14,
+      fontSize: "0.8rem",
     },
     top: "10%",
   },

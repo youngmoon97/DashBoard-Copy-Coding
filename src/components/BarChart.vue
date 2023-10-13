@@ -1,14 +1,14 @@
 <template>
-  <v-layout class="full">
+  <v-layout class="full justify-center">
     <v-app-bar :elevation="5" color="#2F3642" absolute>
       <v-app-bar-title>FUEL CONSUMPTION</v-app-bar-title>
     </v-app-bar>
     <v-main style="height: 100%">
       <v-row style="height: 100%" class="ma-0 pa-0" no-gutters>
-        <v-col sm="12" md="6" lg="6" class="ma-0 pa-0 half">
+        <v-col cols="12" sm="12" md="6" lg="6" class="ma-0 pa-0 half">
           <v-chart class="chart" :option="props.prschartoptions1" autoresize
         /></v-col>
-        <v-col sm="12" md="6" lg="6" class="ma-0 pa-0 half">
+        <v-col cols="12" sm="12" md="6" lg="6" class="ma-0 pa-0 half">
           <v-chart class="chart" :option="props.prschartoptions2" autoresize />
         </v-col>
       </v-row>

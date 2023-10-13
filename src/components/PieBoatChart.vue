@@ -6,6 +6,7 @@
     <v-main class="full">
       <v-row class="ma-0 pa-0" style="height: 100%">
         <v-col
+          cols="12"
           sm="12"
           md="4"
           lg="4"
@@ -14,7 +15,7 @@
         >
           <PieChart :prschartoptions="pieBoatChartOption" />
         </v-col>
-        <v-col sm="6" md="4" lg="4" class="ma-0 pa-0 division3">
+        <v-col cols="6" sm="6" md="4" lg="4" class="ma-0 pa-0 division3">
           <v-row class="ma-0 pa-0" style="height: 50%">
             <v-col class="ma-0 pa-0">
               <BoatChart :prschartoptions="option1"></BoatChart>
@@ -26,7 +27,7 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col sm="6" md="4" lg="4" class="ma-0 pa-0 division3">
+        <v-col cols="6" sm="6" md="4" lg="4" class="ma-0 pa-0 division3">
           <v-row class="ma-0 pa-0" style="height: 50%">
             <v-col class="ma-0 pa-0">
               <BoatChart :prschartoptions="option2"></BoatChart>
@@ -55,14 +56,14 @@ const pieBoatChartOption = ref({
     left: "center",
     top: "center",
     textStyle: {
-      fontSize: 13,
+      fontSize: "0.6rem",
     },
   },
   legend: {
     textStyle: {
-      fontSize: 22,
+      fontSize: "0.8rem",
     },
-    top: "12%",
+    top: "10%",
   },
   series: [
     {
