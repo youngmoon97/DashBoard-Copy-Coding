@@ -273,7 +273,7 @@ const pieChartOption = ref({
   title: {
     text: `1/6`,
     left: "center",
-    top: "60%",
+    top: "53%",
     textStyle: {
       fontSize: "1.2rem",
     },
